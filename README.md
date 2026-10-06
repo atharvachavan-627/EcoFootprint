@@ -1,0 +1,36 @@
+# 🌱 ECOFOOTPRINT: Personal Carbon Footprint & E-Waste Calculator
+College project (E-Waste / Sustainability). Flask backend, vanilla JS frontend, Chart.js charts. **No database.**
+
+## Features
+Register/login/logout, protected pages, 6-step calculator (transport, energy, food, lifestyle, e-waste, review), results with doughnut and bar charts, Eco Score, E-Waste Responsibility Score, reduction simulator, printable report, history with line chart, Learn & Act, Eco Challenge, editable profile, toast notifications, responsive layout.
+
+## Run
+```
+python -m venv venv
+venv\Scripts\activate          # Windows
+source venv/bin/activate       # macOS / Linux
+pip install -r requirements.txt
+python app.py
+```
+Open http://127.0.0.1:5000 (internet needed once for Chart.js and Google Fonts CDNs).
+
+## Structure
+`app.py` routes and auth · `services/calculator.py` engine · `services/recommendations.py` · `data/emission_factors.json` factors · `templates/` (index, auth, app shell) · `static/css/style.css` · `static/js/app.js` (all app pages) and `auth.js`.
+
+## Storage and security
+Accounts are saved in `data/users.json` (passwords hashed) and the session uses a Flask signed cookie; the secret key is generated into `data/.secret_key` or read from the `SECRET_KEY` environment variable. Calculations, history and challenge progress live in browser localStorage. **This is an educational local app, not production-grade authentication.**
+
+## Methodology
+Total = Transportation + Energy + Food + Lifestyle + E-Waste, in kg CO₂e/year (also shown in tonnes). Every factor is in `data/emission_factors.json`.
+- Transport: km/year ÷ efficiency × fuel factor (petrol 2.31 kg/L, diesel 2.68 kg/L, CNG 2.75 kg/kg); EV uses kWh/km × grid; bus/train/metro per-km factors; flights 250 kg (short) and 1100 kg (long) each.
+- Energy: grid 0.82 kg/kWh, reduced by renewable share; AC 1.5 kW × 150 days; LPG 14.2 kg/cylinder × 2.98; all divided by household size.
+- Food: diet base + meat meals × 0.8 kg, scaled by waste and sourcing multipliers.
+- Lifestyle: clothing 15 kg/item, electronics 70 kg/device, plastic band, 3 kg/online order, times a recycling multiplier.
+- E-waste: 60 kg embodied per replaced device, reduced by repair/refurbished use, plus disposal and battery penalties.
+- Eco Score: average of five 0-100 category scores against project-set targets. E-Waste Score: repair 20, refurbished 15, disposal 30, batteries 10, certified centers 10, replacement rate 15.
+
+## Limitations
+This calculator provides an estimate based on predefined emission factors and user-provided information. Factors are rounded, India-leaning averages, not an official scientific measurement. Scores are project-defined. Verify factors against current IPCC, DEFRA or CEA data before citing them.
+
+## Future work
+Server-side storage, real authentication, PDF export, localisation, country-specific factors.

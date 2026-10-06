@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ 'Log in' if mode=='login' else 'Register' }} · ECOFOOTPRINT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"></head><body><div id="toasts" aria-live="polite"></div>
+<div class="auth"><form class="glass" id="f" data-mode="{{ mode }}" novalidate><a class="logo" href="/">🌱 ECOFOOTPRINT</a>
+<h2 style="margin-top:1rem">{{ 'Welcome back' if mode=='login' else 'Create your account' }}</h2>
+{% if mode=='register' %}<label for="name">Full name</label><input id="name" autocomplete="name" required>
+<div class="row2"><div><label for="age">Age</label><input id="age" type="number" min="10" max="100" required></div><div><label for="city">City</label><input id="city" required></div></div>{% endif %}
+<label for="email">Email</label><input id="email" type="email" autocomplete="email" required>
+<label for="password">Password</label><div class="pw"><input id="password" type="password" minlength="8" required><button type="button" id="eye" aria-label="Show or hide password">👁</button></div>
+{% if mode=='register' %}<label for="confirm">Confirm password</label><input id="confirm" type="password" required>{% endif %}
+<p class="err" id="err" role="alert"></p><button class="btn" style="width:100%;justify-content:center">{{ 'Log in' if mode=='login' else 'Create account' }}</button>
+<p style="text-align:center;font-size:.9rem">{% if mode=='login' %}New here? <a href="/register">Create an account</a>{% else %}Have an account? <a href="/login">Log in</a>{% endif %}</p>
+<p style="font-size:.75rem;color:var(--mut)">Educational demo. Local sign-in is not production-grade security.</p></form></div>
+<script src="{{ url_for('static',filename='js/auth.js') }}"></script></body></html>

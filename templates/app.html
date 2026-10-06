@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ title }} · ECOFOOTPRINT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"></head>
+<body data-page="{{ page }}"><div id="toasts" aria-live="polite"></div>
+<div class="layout"><aside id="side" aria-label="Main navigation"><a class="logo" href="/dashboard">🌱 ECOFOOTPRINT</a>
+{% for k,v in pages.items() %}<a class="nl {{ 'on' if k==page }}" href="/{{ k }}" {% if k==page %}aria-current="page"{% endif %}>{{ v }}</a>{% endfor %}
+<div class="me"><div class="av">{{ user.name[0]|upper }}</div><div style="flex:1;min-width:0"><b>{{ user.name }}</b><br><a href="/logout" style="font-size:.85rem">Log out</a></div></div></aside>
+<main><button class="btn alt burger" id="bg" aria-label="Open menu" aria-controls="side">☰ Menu</button><div id="main"></div></main></div>
+<script>window.USER={{ user|tojson }};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="{{ url_for('static',filename='js/app.js') }}"></script></body></html>

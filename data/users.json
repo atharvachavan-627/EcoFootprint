@@ -1,0 +1,9 @@
+{
+ "atharva@gmail.com": {
+  "name": "Atharva Chavan",
+  "email": "atharva@gmail.com",
+  "age": 20,
+  "city": "Kalyan",
+  "pw": "pbkdf2:sha256:600000$qoFwNcFLQo9pMSTg$781a2f62712b5492435e2375256b691ea8a479c3c75ea045c87e47d0deda9e99"
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "_note": "Approximate, India-leaning factors (kg CO2e) from public IPCC/DEFRA/CEA-style averages. Educational estimates only.",
+ "grid_kg_per_kwh": 0.82,
+ "transport": {
+  "per_km": {"bus": 0.089, "train": 0.041, "metro": 0.03, "bicycle": 0, "walking": 0},
+  "public_avg_per_km": 0.06,
+  "fuel_kg_per_unit": {"petrol": 2.31, "diesel": 2.68, "cng": 2.75},
+  "ev_kwh_per_km": {"car": 0.15, "motorcycle": 0.03},
+  "flight_short": 250, "flight_long": 1100
+ },
+ "energy": {"lpg_kg_per_cylinder": 14.2, "lpg_kg_co2_per_kg": 2.98, "gas_kg_per_m3": 2.0, "ac_kw": 1.5, "ac_days": 150},
+ "food": {
+  "diet_base": {"vegan": 900, "vegetarian": 1100, "mostly_vegetarian": 1200, "mixed": 1300, "high_meat": 1500},
+  "meat_meal_kg": 0.8,
+  "waste": {"low": 0.95, "medium": 1.0, "high": 1.12},
+  "origin": {"local": 0.92, "mixed": 1.0, "imported": 1.1}
+ },
+ "lifestyle": {
+  "clothing_item_kg": 15, "electronics_kg": 70, "plastic": {"low": 100, "medium": 250, "high": 450},
+  "online_order_kg": 3, "recycling_multiplier": {"never": 1.0, "sometimes": 0.92, "always": 0.85}
+ },
+ "ewaste": {
+  "device_embodied_kg": 60, "repair_mult": {"always": 0.8, "sometimes": 0.9, "never": 1.0},
+  "refurb_mult": {"yes": 0.75, "sometimes": 0.88, "no": 1.0},
+  "disposal_penalty_per_device": {"certified": 0, "collection": 1, "donation": 0, "general": 15, "unknown": 8},
+  "battery_penalty": 5
+ },
+ "targets_kg": {"transport": 900, "energy": 800, "food": 1300, "lifestyle": 600}
+}
