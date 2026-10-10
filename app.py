@@ -125,4 +125,4 @@ for _p in PAGES:
     app.add_url_rule('/' + _p, _p, make_page(_p))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
